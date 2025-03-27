@@ -55,10 +55,10 @@ python3 gopher_encoder.py "gopher://..." --output encoded_output.txt
 
 ## How It Works
 - Input must start with gopher:// — this is enforced
-- The first line must contain the /_ prefix to indicate a raw HTTP payload
-- All HTTP data after /_ is double URL-encoded
-- All line endings (\r\n) are double-encoded to %250D%250A
-- Headers are encoded as Key%3A%2520Value%250D%250A
+- The first line must contain the `/_` prefix to indicate a raw HTTP payload
+- All HTTP data after `/_` is double URL-encoded
+- All line endings (`\r\n`) are double-encoded to `%250D%250A`
+- Headers are encoded as `Key%3A%2520Value%250D%250A`
 
 ## Output Examples
 ```
