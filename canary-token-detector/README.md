@@ -31,7 +31,7 @@ chmod +x canary-token-detector.sh
 - Credentials are kept in memory only and cleared after use
 
 ## Output Examples
-```
+```bash
 # Python
 [+] Match: arn:aws:iam::121110987654:user/canarytokens.com@@0a1bcd1efg2hij3lmnopkwzxy
 
