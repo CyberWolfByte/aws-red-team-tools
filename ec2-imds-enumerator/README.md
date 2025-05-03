@@ -29,6 +29,7 @@ chmod +x ec2-imds-enumerator.sh
 - Organizes and prints the metadata to terminal for analysis
 
 ## Output Example
+```
 ===== EC2 Metadata Summary =====
 ami-id: ami-0f123abcde4567890
 instance-id: i-0a12b3456cdef7890
@@ -66,6 +67,7 @@ Identity Role: ec2-instance
 user-data: #!/bin/bash
 echo "A script with sensitive data"
 ...
+```
 
 ## Contributing
 If you have an idea for improvement or wish to collaborate, feel free to contribute.
