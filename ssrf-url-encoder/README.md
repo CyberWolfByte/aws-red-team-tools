@@ -25,6 +25,34 @@ python3 ssrf-url-encoder.py --target <TARGET_URL> --proxy <PROXY_URL> [--method 
 - `--output`: Save the encoded or decoded payload to a file.
 - `--verbose`: Display step-by-step output for debugging.
 
+### How It Works
+The `ssrf-url-encoder` script constructs URL-encoded SSRF payloads by systematically encoding the target URL to achieve multiple encoding layers. This process is particularly useful when targeting applications that require double-encoded payloads to bypass filters or proxy constraints.
+
+** Single Encoding Process**
+- The target URL is first single encoded using standard URL encoding (`%` encoding). This prepares the URL for safe inclusion within a proxy endpoint or as a standalone payload.
+
+**Hybrid Encoding Process (Achieving Double Encoding)**
+1. **Initial Single Encoding of Target:**
+   - The target URL is single encoded to prepare it for inclusion in the proxy structure.
+   - Example:
+     - Input: `http://example.com/resource`
+     - Single Encoded: `http%3A%2F%2Fexample.com%2Fresource`
+
+2. **Appending to Proxy URL:**
+   - The single encoded target is then embedded within the proxy URL as the value of the query parameter defined by the user. This creates the intermediate URL structure.
+   - Example:
+     - Proxy Structure: `http://proxy.com/?url=`
+     - Intermediate URL: `http://proxy.com/?url=http%3A%2F%2Fexample.com%2Fresource`
+
+3. **Second Single Encoding (Achieving Double Encoding):**
+   - The entire constructed proxy URL is then single encoded again to achieve the intended double encoding. This ensures that the payload is sufficiently obfuscated to bypass WAFs or other filtering mechanisms.
+   - Example:
+     - Intermediate URL: `http://proxy.com/?url=http%3A%2F%2Fexample.com%2Fresource`
+     - Double Encoded: `http%253A%252F%252Fproxy.com%252F%253Furl%253Dhttp%25253A%25252F%25252Fexample.com%25252Fresource`
+
+**Recursive Decoding**
+- When the `--decode` flag is used, the script recursively decodes the payload until no further decoding is possible, ensuring that deeply nested encoded payloads are fully resolved.
+
 ## Output Examples
 **1. Constructing SSRF Payload with Method and Headers**
 ```bash
