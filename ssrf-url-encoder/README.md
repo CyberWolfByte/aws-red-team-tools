@@ -1,5 +1,5 @@
 # SSRF URL Encoder
-ssrf-url-encoder is a Python-based utility designed to construct URL-encoded payloads for SSRF exploitation. It allows users to single encode, recursively decode, and construct complex SSRF payloads with custom proxy endpoints, HTTP methods, and headers.
+`ssrf-url-encoder` is a Python-based utility designed to construct URL-encoded payloads for SSRF exploitation. It allows users to single encode, recursively decode, and construct complex SSRF payloads with custom proxy endpoints, HTTP methods, and headers.
 
 ## Features
 - Construct SSRF payloads with custom proxy endpoints.
@@ -16,10 +16,10 @@ python3 ssrf-url-encoder.py --target <TARGET_URL> --proxy <PROXY_URL> [--method 
 ## Arguments:
 - `--target` (required): Target URL to encode or decode.
 - `--proxy`: Proxy endpoint with parameter key, e.g., `?url=` or `?target=`.
-- `--method`: Optional method parameter as key=value, e.g., 'method=GET'
-                     or 'method=PUT'.
+- `--method`: Optional method parameter as key=value, e.g., `method=GET`
+                     or `method=PUT`.
 - `--headers`: Optional headers parameter as key=value, e.g.,
-                     'headers=X-aws-ec2-metadata-token-ttl-seconds=21600'.
+                     `headers=X-aws-ec2-metadata-token-ttl-seconds=21600`.
 - `--single`: Single encode the target URL only.
 - `--decode`: Recursively decode the target URL.
 - `--output`: Save the encoded or decoded payload to a file.
